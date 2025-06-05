@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            font-size: 18px;
+        }
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            width: 500px;
+            padding: 30px;
+            border: 1px solid #eeeeee;
+            border-radius: 10px;
+            background-color: #003b5b;
+        }
+        h4 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: white;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #submit {
+            border: none;
+            background-color: orangered;
+            color: white;
+            width: 200px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #submit:hover {
+            background-color: #333333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="contactForm">
+            <h4>Fill The Details</h4>
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="number" name="rollNo" placeholder="Roll No." required>
+            <input type="number" name="regNo" placeholder="Reg No." required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="branch" placeholder="Branch" required>
+            <input type="submit" value="Submit" id="submit">
+        </form>
+    </div>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    const userInfo = {
+        Name: formData.get("name"),
+        RollNo: formData.get("rollNo").toString(),  // Convert to string
+        RegNo: formData.get("regNo").toString(),    // Convert to string
+        Email: formData.get("email"),
+        Branch: formData.get("branch")
+    };
+
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+    window.location.href = 'Quiz1.html';
+});
+
+    </script>
+</body>
+</html>
